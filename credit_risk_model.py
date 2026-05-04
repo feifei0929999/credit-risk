@@ -15,7 +15,7 @@ df = pd.read_csv(url, sep=" ", header=None, names=columns)
 print(df.head())
 print(df.shape)
 # 1 = good → 0
-# 2 = bad → 1（违约）
+# 2 = bad → 1
 
 df["target"] = df["target"].map({1: 0, 2: 1})
 
