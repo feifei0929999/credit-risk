@@ -22,3 +22,25 @@ df_encoded = pd.get_dummies(df, drop_first=True)
 
 print(df_encoded.head())
 print(df_encoded.shape)
+
+# Graphs
+sns.countplot(x="target", data=df)
+plt.title("Credit Risk Distribution")
+plt.show()
+
+sns.boxplot(x="target", y="age", data=df)
+plt.title("Age vs Credit Risk")
+plt.show()
+
+sns.boxplot(x="target", y="credit_amount", data=df)
+plt.title("Credit Amount vs Risk")
+plt.show()
+
+sns.boxplot(x="target", y="duration", data=df)
+plt.title("Duration vs Risk")
+plt.show()
+
+df["age"].hist()
+plt.title("Age Distribution")
+plt.show()
+
