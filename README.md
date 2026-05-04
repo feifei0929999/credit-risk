@@ -2,72 +2,76 @@
 
 ##  Project Overview
 
-This project uses machine learning to predict whether a borrower is likely to default on a loan.  
-The goal is to help financial institutions identify high-risk borrowers and make better lending decisions.
+This project uses machine learning to predict whether a borrower is likely to default on a loan.
+The goal is to help financial institutions identify high-risk borrowers and improve credit risk management.
 
 ##  Dataset
 
-* Source: LendingClub / Kaggle Credit Risk Dataset
-* Target variable: loan default status
+* Source: UCI Machine Learning Repository (German Credit Dataset)
+
+* Number of observations: 1000 borrowers
+
+* Target variable:
+
+  * 0 = good credit
+  * 1 = bad credit (default)
+
 * Features include:
-  * income
-  * loan amount
-  * interest rate
-  * loan grade
-  * employment length
-  * debt-to-income ratio
+
+  * credit amount
+  * loan duration
+  * age
+  * employment status
+  * credit history
+  * housing status
+
+##  Data Limitation
+
+This dataset represents borrowers in Germany and may not generalize to other countries or financial systems.
 
 ##  Tools Used
 
 * Python
 * pandas
-* numpy
-* matplotlib
-* seaborn
 * scikit-learn
-
-##  Exploratory Data Analysis
-
-The project explores:
-
-* Distribution of loan amounts
-* Default vs non-default borrowers
-* Relationship between interest rate and default risk
-* Correlation between numerical variables
-* Default rate across different borrower groups
 
 ##  Machine Learning Models
 
-The following models are used:
+The following models were implemented:
 
 * Logistic Regression
 * Random Forest Classifier
 
-##  Model Evaluation
+##  Model Results
 
-Models are evaluated using:
+### Logistic Regression
 
-* Accuracy
-* Precision
-* Recall
-* F1-score
-* ROC-AUC score
-* Confusion matrix
+* Accuracy: 0.78
+* ROC-AUC: 0.80
+
+### Random Forest
+
+* Accuracy: 0.77
+* ROC-AUC: 0.80
 
 ##  Key Insights
 
-* Borrowers with higher interest rates tend to have higher default risk.
-* Lower income and higher debt-to-income ratio may increase the probability of default.
-* Credit risk prediction is important because false negatives can cause financial losses for lenders.
+* Logistic Regression performed slightly better than Random Forest.
+* The model has relatively low recall for default cases, meaning some high-risk borrowers are not detected.
+* Credit amount, age, and loan duration are the most important predictors of default risk.
+
+##  Business Interpretation
+
+* Missing high-risk borrowers (false negatives) can lead to financial losses for lenders.
+* Improving recall for default cases is important in real-world applications.
 
 ##  Future Improvements
 
-* Add XGBoost model
-* Improve feature engineering
-* Tune hyperparameters
-* Handle class imbalance using SMOTE or class weights
-* Build an interactive dashboard
+* Improve recall using class weighting or resampling techniques
+* Try advanced models such as XGBoost
+* Apply the model to larger and more diverse datasets
 
-##  Business Value
+##  Conclusion
 
-This project demonstrates how data science can support credit risk management by identifying risky borrowers before loans are approved.
+This project demonstrates how machine learning can be applied to credit risk prediction using real-world data.
+Although the dataset is limited to Germany, the modeling approach is applicable to broader financial risk problems.
