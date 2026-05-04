@@ -55,7 +55,6 @@ print("=== Random Forest ===")
 print("Accuracy:", accuracy_score(y_test, y_pred_rf))
 print("ROC-AUC:", roc_auc_score(y_test, y_prob_rf))
 print(classification_report(y_test, y_pred_rf))
-import pandas as pd
 
 importance = rf_model.feature_importances_
 
