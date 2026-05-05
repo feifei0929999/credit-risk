@@ -11,6 +11,8 @@ The goal is to help financial institutions identify high-risk borrowers and impr
 
 * Number of observations: 1000 borrowers
 
+* Number of featrues: 20
+
 * Target variable:
 
   * 0 = good credit
@@ -41,6 +43,7 @@ The following models were implemented:
 
 * Logistic Regression
 * Random Forest Classifier
+* XGBoost Classifier
 
 ##  Model Results
 
@@ -48,15 +51,32 @@ The following models were implemented:
 
 * Accuracy: 0.78
 * ROC-AUC: 0.80
+* Minority Class (1) Recall: 0.80
+* Minority Class (1) Precision: 0.56
+* Strengths: Achieved the highest recall for the minority class (bad credit), which is often crucial in credit risk prediction to minimize false negatives. The ROC-AUC also indicates good overall discriminative power.
+* Weaknesses: Lower precision for the minority class compared to Random Forest, meaning it generates more false positives. Required feature scaling for convergence, indicating sensitivity to feature scales.
 
 ### Random Forest
 
 * Accuracy: 0.77
 * ROC-AUC: 0.80
+* Minority Class (1) Recall: 0.35
+* Minority Class (1) Precision: 0.78
+* Strengths: Achieved the highest accuracy among the three and a relatively high precision for the minority class. Less sensitive to feature scaling.
+* Weaknesses: Significantly lower recall for the minority class compared to Logistic Regression, indicating it struggles to identify a large portion of actual bad credit cases despite the class_weight='balanced' parameter. This might be due to the inherent nature of tree-based models or require more aggressive tuning.
+
+### XGBoost
+
+* Accuracy: 0.715
+* ROC-AUC: 0.779
+* Minority Class (1) Recall: 0.52
+* Minority Class (1) Precision: 0.53
+* Strengths: Provides a balanced approach with moderate recall and precision for the minority class. Generally robust and powerful for complex datasets.
+* Weaknesses: Lower overall accuracy and ROC-AUC compared to the other two models in this specific implementation. Its recall for the minority class is better than Random Forest but significantly lower than Logistic Regression.
 
 ##  Key Insights
 
-* Logistic Regression performed slightly better than Random Forest.
+* Logistic Regression performed slightly better than Random Forest and XGBoost.
 * The model has relatively low recall for default cases, meaning some high-risk borrowers are not detected.
 * Credit amount, age, and loan duration are the most important predictors of default risk.
 
