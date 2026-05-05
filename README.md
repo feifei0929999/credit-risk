@@ -95,5 +95,5 @@ The following models were implemented:
 
 ##  Conclusion
 
-This project demonstrates how machine learning can be applied to credit risk prediction using real-world data.
+This project demonstrates how machine learning can be applied to credit risk prediction using real-world data, as it can help financial institutions identify high-risk applicants and reduce potential losses.
 Although the dataset is limited to Germany, the modeling approach is applicable to broader financial risk problems. When the business objective prioritizes minimizing losses from defaults, the Logistic Regression model with class_weight='balanced' is the recommended choice due to its superior recall for the minority class. Further hyperparameter tuning for all models, especially Random Forest and XGBoost, could be explored to refine their performance and optimize the trade-off between precision and recall based on specific business costs associated with false positives versus false negatives.
