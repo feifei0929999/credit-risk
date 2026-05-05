@@ -76,19 +76,18 @@ The following models were implemented:
 
 ##  Key Insights
 
-* Logistic Regression performed slightly better than Random Forest and XGBoost.
+* Logistic Regression with class_weight='balanced' performed the best compared to Random Forest and XGBoost.
 * The model has relatively low recall for default cases, meaning some high-risk borrowers are not detected.
 * Credit amount, age, and loan duration are the most important predictors of default risk.
 
 ##  Business Interpretation
 
 * Missing high-risk borrowers (false negatives) can lead to financial losses for lenders.
-* Improving recall for default cases is important in real-world applications.
+* Improving recall for default cases is important in real-world applications. Depending on the business objective, the trade-off between precision and recall for the minority class would dictate the final model choice. For a conservative approach to credit risk, high recall for the 'bad credit' class is paramount, making Logistic Regression the preferred choice here.
 
 ##  Future Improvements
 
-* Improve recall using class weighting or resampling techniques
-* Try advanced models such as XGBoost
+* Improve recall using class weighting, resampling techniques, or exploring further hyperparameter tuning for all models
 * Apply the model to larger and more diverse datasets
 
 ##  Conclusion
