@@ -55,6 +55,7 @@ The following models were implemented:
 * Minority Class (1) Precision: 0.56
 * Strengths: Achieved the highest recall for the minority class (bad credit), which is often crucial in credit risk prediction to minimize false negatives. The ROC-AUC also indicates good overall discriminative power.
 * Weaknesses: Lower precision for the minority class compared to Random Forest, meaning it generates more false positives. Required feature scaling for convergence, indicating sensitivity to feature scales.
+* best recall (0.80) of all three models
 
 ### Random Forest
 
@@ -64,6 +65,7 @@ The following models were implemented:
 * Minority Class (1) Precision: 0.78
 * Strengths: Achieved the highest accuracy among the three and a relatively high precision for the minority class. Less sensitive to feature scaling.
 * Weaknesses: Significantly lower recall for the minority class compared to Logistic Regression, indicating it struggles to identify a large portion of actual bad credit cases despite the class_weight='balanced' parameter. This might be due to the inherent nature of tree-based models or require more aggressive tuning.
+* best accuracy (0.775) of all three models
 
 ### XGBoost
 
@@ -73,6 +75,7 @@ The following models were implemented:
 * Minority Class (1) Precision: 0.53
 * Strengths: Provides a balanced approach with moderate recall and precision for the minority class. Generally robust and powerful for complex datasets.
 * Weaknesses: Lower overall accuracy and ROC-AUC compared to the other two models in this specific implementation. Its recall for the minority class is better than Random Forest but significantly lower than Logistic Regression.
+* balanced performance of all three models
 
 ##  Key Insights
 
