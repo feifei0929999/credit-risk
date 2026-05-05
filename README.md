@@ -80,18 +80,7 @@ The following models were implemented:
 ##  Key Insights
 
 * Logistic Regression with class_weight='balanced' performed the best compared to Random Forest and XGBoost.
-* The model has relatively low recall for default cases, meaning some high-risk borrowers are not detected.
-* Credit amount, age, and loan duration are the most important predictors of default risk.
-
-##  Feature Importance
-
-Based on the Random Forest model, the most important features for predicting credit risk include:
-
-* Credit amount
-* Age
-* Loan duration
-
-These variables have the strongest influence on whether a borrower is classified as high-risk or low-risk.
+* Credit amount, age, and loan duration are the most important predictors of credit risk.
 
 ##  Business Interpretation
 
