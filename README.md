@@ -83,6 +83,16 @@ The following models were implemented:
 * The model has relatively low recall for default cases, meaning some high-risk borrowers are not detected.
 * Credit amount, age, and loan duration are the most important predictors of default risk.
 
+##  Feature Importance
+
+Based on the Random Forest model, the most important features for predicting credit risk include:
+
+* Credit amount
+* Age
+* Loan duration
+
+These variables have the strongest influence on whether a borrower is classified as high-risk or low-risk.
+
 ##  Business Interpretation
 
 * Missing high-risk borrowers (false negatives) can lead to financial losses for lenders.
