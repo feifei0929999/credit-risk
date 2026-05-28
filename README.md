@@ -1,51 +1,50 @@
 # Credit Risk Prediction Project
 
-##  Project Overview
+## Project Overview
 
-This project uses machine learning to predict whether a borrower is likely to default on a loan.
-The goal is to help financial institutions identify high-risk borrowers and improve credit risk management.
+This project uses machine learning models to predict whether a borrower is likely to default on a loan. The goal is to help financial institutions identify high-risk borrowers and improve credit risk management.
 
-##  Dataset
+## Dataset
 
-* Source: UCI Machine Learning Repository (German Credit Dataset)
+**Source:** UCI Machine Learning Repository — German Credit Dataset
 
 * Number of observations: 1000 borrowers
+* Number of features: 20
 
-* Number of featrues: 20
+### Target Variable
 
-* Target variable:
+* `0` = Good credit
+* `1` = Bad credit (default risk)
 
-  * 0 = good credit
-  * 1 = bad credit (default)
+### Features Include
 
-* Features include:
+* Credit amount
+* Loan duration
+* Age
+* Employment status
+* Credit history
+* Housing status
 
-  * credit amount
-  * loan duration
-  * age
-  * employment status
-  * credit history
-  * housing status
+## Data Limitation
 
-##  Data Limitation
+This dataset represents borrowers in Germany and may not fully generalize to borrowers in other countries or financial systems.
 
-This dataset represents borrowers in Germany and may not generalize to other countries or financial systems.
-
-##  Tools Used
+## Tools Used
 
 * Python
 * pandas
 * scikit-learn
+* XGBoost
 
-##  Machine Learning Models
+## Machine Learning Models
 
-The following models were implemented:
+The following machine learning models were implemented and compared:
 
 * Logistic Regression
 * Random Forest Classifier
 * XGBoost Classifier
 
-##  Model Results
+## Model Results
 
 ### Logistic Regression
 
@@ -53,9 +52,14 @@ The following models were implemented:
 * ROC-AUC: 0.80
 * Minority Class (1) Recall: 0.80
 * Minority Class (1) Precision: 0.56
-* Strengths: Achieved the highest recall for the minority class (bad credit), which is often crucial in credit risk prediction to minimize false negatives. The ROC-AUC also indicates good overall discriminative power.
-* Weaknesses: Lower precision for the minority class compared to Random Forest, meaning it generates more false positives. Required feature scaling for convergence, indicating sensitivity to feature scales.
-* best recall (0.80) of all three models
+
+**Strengths:**
+Achieved the highest recall for the minority class (bad credit), which is important in credit risk prediction because missing high-risk borrowers can lead to financial losses. The ROC-AUC score also indicates good overall model performance.
+
+**Weaknesses:**
+Lower precision compared to Random Forest, meaning the model produces more false positives. The model also required feature scaling before training.
+
+---
 
 ### Random Forest
 
@@ -63,9 +67,14 @@ The following models were implemented:
 * ROC-AUC: 0.80
 * Minority Class (1) Recall: 0.35
 * Minority Class (1) Precision: 0.78
-* Strengths: Achieved the highest accuracy among the three and a relatively high precision for the minority class. Less sensitive to feature scaling.
-* Weaknesses: Significantly lower recall for the minority class compared to Logistic Regression, indicating it struggles to identify a large portion of actual bad credit cases despite the class_weight='balanced' parameter. This might be due to the inherent nature of tree-based models or require more aggressive tuning.
-* best accuracy (0.775) of all three models
+
+**Strengths:**
+Achieved strong overall accuracy and the highest precision for the minority class. The model is also less sensitive to feature scaling.
+
+**Weaknesses:**
+Recall for the minority class was significantly lower than Logistic Regression, meaning many high-risk borrowers were not identified correctly.
+
+---
 
 ### XGBoost
 
@@ -73,32 +82,48 @@ The following models were implemented:
 * ROC-AUC: 0.779
 * Minority Class (1) Recall: 0.52
 * Minority Class (1) Precision: 0.53
-* Strengths: Provides a balanced approach with moderate recall and precision for the minority class. Generally robust and powerful for complex datasets.
-* Weaknesses: Lower overall accuracy and ROC-AUC compared to the other two models in this specific implementation. Its recall for the minority class is better than Random Forest but significantly lower than Logistic Regression.
-* balanced performance of all three models
 
-##  Key Insights
+**Strengths:**
+Provided a more balanced trade-off between recall and precision for the minority class.
 
-* Logistic Regression with class_weight='balanced' performed the best compared to Random Forest and XGBoost.
-* Credit amount, age, and loan duration are the most important predictors of credit risk.
+**Weaknesses:**
+Lower overall accuracy and ROC-AUC compared to Logistic Regression and Random Forest in this implementation.
 
-##  Business Interpretation
+## Key Insights
 
-* Missing high-risk borrowers (false negatives) can lead to financial losses for lenders.
-* Improving recall for default cases is important in real-world applications. Depending on the business objective, the trade-off between precision and recall for the minority class would dictate the final model choice. For a conservative approach to credit risk, high recall for the 'bad credit' class is paramount, making Logistic Regression the preferred choice here.
+* Logistic Regression with `class_weight='balanced'` performed best for identifying high-risk borrowers.
+* Credit amount, age, and loan duration were among the most important predictors of credit risk.
+* Recall is especially important in credit risk prediction because false negatives may lead to financial losses.
 
-##  Future Improvements
+## Business Interpretation
 
-* Improve recall using class weighting, resampling techniques, or exploring further hyperparameter tuning for all models
-* Apply the model to larger and more diverse datasets
+In real-world lending, failing to identify a high-risk borrower can result in significant financial losses. Therefore, models with higher recall for the default class are often preferred, even if they generate more false positives.
 
-##  Conclusion
+Based on the project results, Logistic Regression was the preferred model because it achieved the strongest recall for identifying borrowers with default risk.
 
-This project demonstrates how machine learning can be applied to credit risk prediction using real-world data, as it can help financial institutions identify high-risk applicants and reduce potential losses.
-Although the dataset is limited to Germany, the modeling approach is applicable to broader financial risk problems. When the business objective prioritizes minimizing losses from defaults, the Logistic Regression model with class_weight='balanced' is the recommended choice due to its superior recall for the minority class. Further hyperparameter tuning for all models, especially Random Forest and XGBoost, could be explored to refine their performance and optimize the trade-off between precision and recall based on specific business costs associated with false positives versus false negatives.
-##  Project Structure
+## Future Improvements
 
-- data_cleaning.ipynb: data preprocessing  
-- eda.ipynb: exploratory data analysis  
-- model_comparison.ipynb: model training and evaluation  
-- report.pdf: final report  
+Potential future improvements include:
+
+* Hyperparameter tuning for all models
+* Resampling techniques such as SMOTE
+* Using larger and more diverse datasets
+* Feature engineering and model explainability techniques
+
+## Conclusion
+
+This project demonstrates how machine learning can be applied to credit risk prediction using real-world financial data. Although the dataset is limited to Germany, the modeling approach can be extended to broader financial risk analysis problems.
+
+Among the tested models, Logistic Regression provided the best performance for identifying high-risk borrowers due to its strong recall for the minority class.
+
+## Project Structure
+
+```text
+credit-risk-prediction/
+│
+├── data_cleaning.ipynb
+├── eda.ipynb
+├── model_comparison.ipynb
+├── report.pdf
+└── README.md
+```
